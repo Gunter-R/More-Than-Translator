@@ -31,7 +31,7 @@ def main():
         Rd = dict()
         Ed = dict()
         R1 = 'абвгдеёжзийклмнопрстуфхцшщьъыэюяЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ'
-        E1 = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'
+        E1 = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM|'
         R = r'''йцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ бю1234567890!-+=*()%,."№;:\/?_'''
         E = r'''qwertyuiop[]asdfghjkl;'zxcvbnm,.`QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>~ ,.1234567890!-+=*()%?/@#$^\|&_'''
         for i in range(len(R)):
