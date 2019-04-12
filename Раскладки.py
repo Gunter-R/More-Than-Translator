@@ -8,8 +8,8 @@ Rd = dict()
 Ed = dict()
 R1 = 'абвгдеёжзийклмнопрстуфхцшщьъыэюяЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ'
 E1 = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'
-R = r'''йцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ бю1234567890!-+=*()%,.'''
-E = r'''qwertyuiop[]asdfghjkl;'zxcvbnm,.`QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>~ ,.1234567890!-+=*()%?/'''
+R = r'''йцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ бю1234567890!-+=*()%,."№;%:?'''
+E = r'''qwertyuiop[]asdfghjkl;'zxcvbnm,.`QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>~ ,.1234567890!-+=*()%?/@#$%^&'''
 for i in range(len(R)):
     Rd[R[i]] = E[i]
     Ed[E[i]] = R[i]
