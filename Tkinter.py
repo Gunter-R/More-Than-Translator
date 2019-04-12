@@ -1,5 +1,6 @@
 from tkinter import *
 import sys
+import os
 
 def main():
     def ecs(event):
@@ -7,7 +8,7 @@ def main():
         main()
 
     def up(event):
-        text = maintext.get('1.0', END).upper()
+        text = maintext.get('1.0', END).upper().strip('\n')
         maintext.delete('1.0', END)
         maintext.insert('1.0', text)
 
@@ -17,13 +18,12 @@ def main():
         maintext.insert('1.0', text)
 
     def enter(event):
+        maintext.delete('1.0', END)
         maintext.insert('1.0', root.selection_get(selection="CLIPBOARD"))
 
     def copy(event):
-        root.clipboard_clear()
-        root.clipboard_append(maintext.get('1.0', END))
-        root.update()
-
+        command = 'echo ' + maintext.get('1.0', END).strip() + '| clip'
+        os.system(command)
 
 
     def RuEng(event, a):
