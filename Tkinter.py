@@ -1,6 +1,6 @@
 from tkinter import *
-import sys
 import os
+
 
 def main():
     def ecs(event):
@@ -17,14 +17,14 @@ def main():
         maintext.delete('1.0', END)
         maintext.insert('1.0', text)
 
-    def enter(event):
+    def enter1(event):
+        print('lol')
         maintext.delete('1.0', END)
         maintext.insert('1.0', root.selection_get(selection="CLIPBOARD"))
 
     def copy(event):
         command = 'echo ' + maintext.get('1.0', END).strip() + '| clip'
         os.system(command)
-
 
     def RuEng(event, a):
         a = a.rstrip()
@@ -38,37 +38,39 @@ def main():
             Rd[R[i]] = E[i]
             Ed[E[i]] = R[i]
         text2 = ''
-        text = maintext.get('1.0', END)[:-1].replace('\n', '')   #ввод
+        text = maintext.get('1.0', END)[:-1].replace('\n', '')  # ввод
 
+        flag = True
         if a == 'Ru':
             for i in range(len(text)):
                 if text[i] in E1:
-                    print('Введён неправильный язык!')
-                    sys.exit(-1)
+                    enterlabel = Label(root, text='Wrong language!', font='Fixedsys 20', bg='gainsboro', fg='brown')
+                    enterlabel.place(x=207, y=25)
+                    flag = False
         if a == 'Eng':
             for i in range(len(text)):
                 if text[i] in R1:
-                    print('Введён неправильный язык!')
-                    sys.exit(-1)
-        if a == 'Ru':
-            for i in range(len(text)):
-                text2 += Rd[text[i]]
-        elif a == 'Eng':
-            for i in range(len(text)):
-                text2 += Ed[text[i]]
-        maintext.delete('1.0', END)
-        maintext.insert('1.0', text2)
-
-
-
-
+                    enterlabel = Label(root, text='Wrong language!', font='Fixedsys 20', bg='gainsboro', fg='brown')
+                    enterlabel.place(x=207, y=25)
+                    flag = False
+        if flag:
+            enterlabel = Label(root, text='Enter your text', font='Fixedsys 20', bg='gainsboro', fg='brown')
+            enterlabel.place(x=207, y=25)
+            if a == 'Ru':
+                for i in range(len(text)):
+                    text2 += Rd[text[i]]
+            elif a == 'Eng':
+                for i in range(len(text)):
+                    text2 += Ed[text[i]]
+            maintext.delete('1.0', END)
+            maintext.insert('1.0', text2)
 
     root = Tk()
     root.title('Сorrect your text')
     root.geometry('800x500+400+200')
     root.configure(background='gainsboro')
 
-    escbutt = Button(root, text='Rest', width=4, heigh=1, font='Fixedsys 11', bg='brown', fg='white')
+    escbutt = Button(root, text='Reset', width=5, heigh=1, font='Fixedsys 11', bg='brown', fg='white')
     escbutt.place(x=10, y=10)
     escbutt.bind('<Button-1>', ecs)
 
@@ -99,7 +101,8 @@ def main():
     maintext.place(x=80, y=70)
 
     root.bind('<Control-c>', copy)
-    root.bind('<Control-v>', enter)
+    root.bind('<Control-v>', enter1)
     root.mainloop()
+
 
 main()
